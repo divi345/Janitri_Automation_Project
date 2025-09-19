@@ -13,18 +13,18 @@ public class LoginTest extends BaseTest {
 	public void testLoginWithBlankFieldsShowsError() throws InterruptedException {
 	    LoginPage loginPage = new LoginPage(driver);
 
-	    // Enter blank User ID and Password
+	    
 	    loginPage.enterUserId("");
-	    Thread.sleep(2000); // wait 2 seconds
+	    Thread.sleep(2000); 
 
 	    loginPage.enterPassword("");
-	    Thread.sleep(2000); // wait 2 seconds
+	    Thread.sleep(2000); 
 
-	    // Click login
+	    
 	    loginPage.clickLogin();
-	    Thread.sleep(2000); // wait 2 seconds for error message to appear
+	    Thread.sleep(2000); 
 
-	    // Verify error message
+	    
 	    String error = loginPage.getErrorMessage();
 	    Assert.assertFalse(error.isEmpty(), "Error message should appear for blank fields");
 	}
@@ -33,22 +33,22 @@ public class LoginTest extends BaseTest {
 	public void testInvalidLoginShowsError() throws InterruptedException {
 	    LoginPage loginPage = new LoginPage(driver);
 
-	    // Enter random credentials
+	    
 	    loginPage.enterUserId("randomUser");
-	    Thread.sleep(2000); // wait 2 seconds
+	    Thread.sleep(2000); 
 
 	    loginPage.enterPassword("randomPass");
-	    Thread.sleep(2000); // wait 2 seconds
+	    Thread.sleep(2000); 
 
-	    // Click login
+	    
 	    loginPage.clickLogin();
-	    Thread.sleep(2000); // wait 2 seconds for error message to appear
+	    Thread.sleep(2000); 
 
-	    // Capture and print error message
+	    
 	    String error = loginPage.getErrorMessage();
 	    System.out.println("Error Message Displayed: " + error);
 
-	    // Verify error message is shown
+	    
 	    Assert.assertFalse(error.isEmpty(), "Error message should be displayed for invalid login");
 	}
 
@@ -57,19 +57,19 @@ public class LoginTest extends BaseTest {
 	public void testPasswordMaskedButton() {
 	    LoginPage loginPage = new LoginPage(driver);
 
-	    // Enter password
+	    
 	    loginPage.enterPassword("password123");
 
-	    // Verify masked initially
+	    
 	    Assert.assertEquals(loginPage.getPasswordFieldType(), "password", 
 	        "Password should be masked initially");
 
-	    // Toggle to show
+	    
 	    loginPage.togglePasswordVisibility();
 	    Assert.assertEquals(loginPage.getPasswordFieldType(), "text", 
 	        "Password should be visible after toggling");
 
-	    // Toggle back to mask
+	    
 	    loginPage.togglePasswordVisibility();
 	    Assert.assertEquals(loginPage.getPasswordFieldType(), "password", 
 	        "Password should be masked again after second toggle");
